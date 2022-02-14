@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Acoes } from "./modelo/acoes";
+import { AcoesService } from "./acoes.service";
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-acoes',
@@ -8,6 +11,8 @@ import { FormControl } from '@angular/forms';
 })
 export class AcoesComponent {
   acoesInput = new FormControl();
-
-  constructor() {}
+  acoes$ = this.acoesService.getAcoes();
+  
+  constructor(private acoesService: AcoesService) {}
+  
 }
